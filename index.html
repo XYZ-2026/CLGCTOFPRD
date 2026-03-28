@@ -2521,13 +2521,6 @@ tr:hover td       { background: var(--row-hover); }
   <div class="card">
     <h2>Quick Tools</h2>
     <div class="tools-grid">
-      <div class="tool-card" onclick="startForm()">
-        <div class="tool-icon red">&#128203;</div>
-        <div>
-          <div style="font-weight:700;font-size:14px">Choice Form Builder</div>
-          <div class="muted">Build &amp; save your MHT-CET preference list</div>
-        </div>
-      </div>
 <div class="tool-card" onclick="openCutoffChecker()">
         <div class="tool-icon blue">&#128202;</div>
         <div>
@@ -2535,21 +2528,7 @@ tr:hover td       { background: var(--row-hover); }
           <div class="muted">Search MHT-CET &amp; JEE Mains cutoffs by college</div>
         </div>
       </div>
-      <div class="tool-card" onclick="startJeeForm()">
-        <div class="tool-icon green">&#127760;</div>
-        <div>
-          <div style="font-weight:700;font-size:14px">JEE Mains Choice Form</div>
-          <div class="muted">Build your All India seat preference list via JEE score</div>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <h2 style="margin:0">Saved Forms</h2>
-      <span id="formSyncStatus" class="save-indicator" style="display:none"></span>
-    </div>
-    <div id="formHistory"></div>
   </div>
 </div>
 </div>
@@ -3249,8 +3228,6 @@ function updTopbar(){
 nav.innerHTML=isAdmin
     ?'<button class="nav-btn" onclick="showPage(\'admin\')">&#128737; Admin</button>'
     :'<button class="nav-btn" onclick="showPage(\'dashboard\')">&#127968; Home</button>'+
-     '<button class="nav-btn" onclick="startForm()">+ MHT-CET Form</button>'+
-     '<button class="nav-btn" onclick="startJeeForm()">+ JEE Form</button>'+
      '<button class="nav-btn" onclick="openCutoffChecker()">&#128202; Cutoffs</button>';
 mobBody.innerHTML =
   (isAdmin
