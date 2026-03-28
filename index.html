@@ -2481,29 +2481,8 @@ tr:hover td       { background: var(--row-hover); }
     <button class="btn btn-primary" id="newFormBtn" onclick="startForm()">+ New Choice Form</button>
   </div>
 <!-- First-time score setup (shown only when percentile/rank = 0) -->
-<div id="dashScoreSetup" class="card" style="display:none;border:2px solid var(--brand);">
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-    <div style="width:40px;height:40px;border-radius:12px;background:var(--brand-soft);display:grid;place-items:center;font-size:20px;flex-shrink:0">🎯</div>
-    <div>
-      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:16px">Set Your MHT-CET Score</div>
-      <div class="muted">Enter your percentile and rank to unlock college recommendations</div>
-    </div>
-  </div>
-<div class="field-row">
-    <div><label>MHT-CET Percentile</label><input type="number" id="setupPct" placeholder="92.5000" step="0.0001" min="0" max="100"></div>
-    <div><label>MHT-CET Rank</label><input type="number" id="setupRank" placeholder="22500" min="1"></div>
-  </div>
-  <div style="margin:12px 0 4px;border-top:1px solid var(--stroke);padding-top:12px">
-    <div style="font-size:12px;font-weight:700;color:#1d4ed8;margin-bottom:8px">&#127760; JEE Mains Score <span class="chip chip-gray" style="font-size:10px;margin-left:4px">optional</span></div>
-  </div>
-  <div class="field-row">
-    <div><label>JEE Percentile</label><input type="number" id="setupJeePct" placeholder="95.2500" step="0.0001" min="0" max="100"></div>
-    <div><label>JEE Rank (AIR)</label><input type="number" id="setupJeeRank" placeholder="5000" min="1"></div>
-  </div>
-<button class="btn btn-primary btn-full" style="margin-top:14px" onclick="saveSetupScore()">
-  Save Scores
-</button>
-<p class="help">&#128310; JEE scores are <strong>required</strong> to use the JEE Mains Choice Form tool. MHT-CET scores are required for the main choice form.</p>
+<div id="dashScoreSetup" style="display:none;">
+
 </div>
 
 <!-- Normal dashboard content (hidden until score is set) -->
@@ -3496,11 +3475,7 @@ function renderDash(){
   document.getElementById('dashSub').textContent='College Simplified — MHT-CET Dashboard';
 document.getElementById('dashInfo').innerHTML=
     '<div class="info-block"><div class="info-label">Full Name</div><div class="info-value" style="font-size:15px">'+esc(u.name)+'</div></div>'+
-    '<div class="info-block"><div class="info-label">Email</div><div class="info-value" style="font-size:13px">'+esc(u.email)+'</div></div>'+
-    '<div class="info-block"><div class="info-label">MHT-CET Percentile</div><div class="info-value">'+f4(u.percentile)+'</div></div>'+
-    '<div class="info-block"><div class="info-label">MHT-CET Rank</div><div class="info-value">'+fR(u.rank)+'</div></div>'+
-    (u.jeePercentile?'<div class="info-block" style="border:1.5px solid #bfdbfe"><div class="info-label" style="color:#1d4ed8">&#127760; JEE Percentile</div><div class="info-value" style="color:#1d4ed8">'+f4(u.jeePercentile)+'</div></div>':'')+
-    (u.jeeRank?'<div class="info-block" style="border:1.5px solid #bfdbfe"><div class="info-label" style="color:#1d4ed8">&#127760; JEE Rank (AIR)</div><div class="info-value" style="color:#1d4ed8">'+fR(u.jeeRank)+'</div></div>':'');
+    '<div class="info-block"><div class="info-label">Email</div><div class="info-value" style="font-size:13px">'+esc(u.email)+'</div></div>';
 var needsScore = !u.percentile || !u.rank || u.percentile<=0 || u.rank<=0;
 var needsJee = !u.jeePercentile || !u.jeeRank || u.jeePercentile<=0 || u.jeeRank<=0;
 var nb=document.getElementById('newFormBtn');
